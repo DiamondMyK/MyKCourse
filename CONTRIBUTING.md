@@ -51,7 +51,8 @@
 1. [克隆](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository)项目的文档库到您的本地开发环境。
 
 2. 创建一个新的分支，以便您的更改不会影响主分支。例如：git checkout -b docs/my-docs-update
-3. 更新文档，确保您的更改清晰、准确并易于理解。
+3. 
+4. 更新文档，确保您的更改清晰、准确并易于理解。
 
 4. 提交更改，确保您的提交消息清晰和简洁。
 

@@ -180,13 +180,13 @@ MyKCourse在线课程申请及审批系统，旨在简化学生课程申请流�
 7. 等待审查和反馈：其他项目维护者将会审查您的 Pull Request，并可能提供反馈或建议。
 8. 合并您的更改：一旦您的 Pull Request 被审阅并通过，它将会被合并到主分支。
 
-请阅读贡献文件[CONTRIBUTING.md](https://github.com/yourusername/yourproject)以获取更多信息。
+请阅读贡献文件[CONTRIBUTING.md](https://github.com/DiamondMyK/MyKCourse/blob/master/CONTRIBUTING.md)以获取更多信息。
 
 请确保遵循项目的贡献准则和代码风格。感谢您的贡献！
 
 ## 许可证
 
-MyK在线课程申请及审批系统是一款开源软件，使用的是位于[LICENSE](https://github.com/DiamondMyK/MyKCourse/blob/main/LICENSE)中的MIT许可证。请阅读许可证文件以获取更多信息。
+MyK在线课程申请及审批系统是一款开源软件，使用的是位于[LICENSE.md](https://github.com/DiamondMyK/MyKCourse/blob/master/LICENSE.md)中的MIT许可证。请阅读许可证文件以获取更多信息。
 
 ## 联系方式
 
