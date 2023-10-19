@@ -1,0 +1,121 @@
+{
+  "clearInfo": {
+    "clearUrl": "api/clear.json"
+  },
+  "logoInfo": {
+    "title": "images/course.png",
+    "image": "images/logo.png",
+    "href": ""
+  },
+  "menuInfo": {
+    "currency": {
+      "title": "菜单",
+      "icon": "fa fa-address-book",
+      "child": [
+        {
+          "title": "用户管理",
+          "href": "",
+          "urole": "管理员",
+          "icon": "fa fa-user-o",
+          "target": "_self",
+          "child": [
+            {
+              "title": "添加用户",
+              "href": "views/user/adduser.html",
+              "icon": "fa fa-plus-square-o",
+              "target": "_self"
+            },
+            {
+              "title": "查询用户",
+              "href": "views/user/finduser.html",
+              "icon": "fa fa-search",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "课程管理",
+          "href": "",
+          "urole": "管理员",
+          "icon": "fa fa-user-o",
+          "target": "_self",
+          "child": [
+            {
+              "title": "添加课程",
+              "href": "views/course/addcourse.html",
+              "icon": "fa fa-plus-square-o",
+              "target": "_self"
+            },
+            {
+              "title": "查询课程",
+              "href": "views/course/findcourse.html",
+              "icon": "fa fa-search",
+              "target": "_self"
+            }
+          ]
+        },{
+          "title": "审批记录",
+          "href": "",
+          "urole": "管理员",
+          "icon": "fa fa-user-o",
+          "target": "_self",
+          "child": [
+            {
+              "title": "所有记录",
+              "href": "views/audit/allaudit.html",
+              "icon": "fa fa-plus-square-o",
+              "target": "_self"
+            },
+            {
+              "title": "记录导出",
+              "href": "views/audit/exportaudit.html",
+              "icon": "fa fa-plus-square-o",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "申请管理",
+          "href": "",
+          "urole": "学生",
+          "icon": "fa fa-user-o",
+          "target": "_self",
+          "child": [
+            {
+              "title": "课程申请",
+              "href": "views/audit/findaudit.html",
+              "icon": "fa fa-search",
+              "target": "_self"
+            },
+            {
+              "title": "我的申请",
+              "href": "views/audit/myaudit.html",
+              "icon": "fa fa-plus-square-o",
+              "target": "_self"
+            },
+            {
+              "title": "申请记录",
+              "href": "views/audit/auditlog.html",
+              "icon": "fa fa-plus-square-o",
+              "target": "_self"
+            }
+          ]
+        }, {
+              "title": "审批管理",
+              "href": "",
+              "urole": "课程主讲教师,主管教师",
+              "icon": "fa fa-user-o",
+              "target": "_self",
+              "child": [
+                  {
+                      "title": "审批管理",
+                      "href": "views/audit/manageaudit.html",
+                      "icon": "fa fa-plus-square-o",
+                      "target": "_self"
+                  }
+              ]
+          }
+      ]
+    }
+  }
+}

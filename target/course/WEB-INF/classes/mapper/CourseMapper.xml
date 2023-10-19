@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.CourseMapper">
+
+    <insert id="insertCourse"
+        parameterType="model.Course">
+        INSERT INTO course(cname, cremark)
+        VALUES(#{cname},#{cremark})
+    </insert>
+
+    <delete id="deleteCourse">
+        DELETE FROM course WHERE cid = #{cid}
+    </delete>
+
+    <select id="getById" resultType="model.Course">
+        SELECT * FROM course WHERE cid = #{cid}
+    </select>
+
+    <resultMap type="model.Course" id="courseMap">
+        <result property="cid" column="cid" />
+        <result property="cname" column="cname" />
+        <result property="cremark" column="cremark" />
+        <result property="auditone" column="auditone" />
+        <result property="audittwo" column="audittwo" />
+        <result property="nameone" column="nameone" />
+        <result property="nametwo" column="nametwo" />
+    </resultMap>
+    <select id="selectCourses" parameterType="java.util.Map" resultMap="courseMap">
+        SELECT c.*,u1.realname as nameone, u2.realname as nametwo FROM course c
+        left join user u1 on c.auditone = u1.userid
+        left join user u2 on c.audittwo = u2.userid
+        <where>
+            <if test="cid != null"> AND c.cid = #{cid} </if>
+            <if test="cname != null"> AND c.cname LIKE CONCAT(CONCAT('%',#{cname}),'%')</if>
+        </where>
+    </select>
+
+    <update id="modifyCourse" parameterType="model.Course">
+       UPDATE course
+       <set>
+           <if test="cname != null"> cname = #{cname}, </if>
+           <if test="cremark != null"> cremark = #{cremark} </if>
+       </set>
+       WHERE cid = #{cid}
+    </update>
+
+    <update id="configCourse" parameterType="model.Course">
+        UPDATE course
+        set auditone = #{auditone},audittwo = #{audittwo}
+        WHERE cid = #{cid}
+    </update>
+</mapper>

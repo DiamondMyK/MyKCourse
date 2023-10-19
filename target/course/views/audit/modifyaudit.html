@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<base href="../../" />
+		<meta charset="utf-8">
+		<title>修改申请</title>
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<link rel="stylesheet" href="lib/layui-v2.5.4/css/layui.css" media="all">
+		<link rel="stylesheet" href="css/public.css" media="all">
+		<script src="lib/layui-v2.5.4/layui.js" charset="utf-8"></script>
+		<script src="js/audit/modifyaudit.js"></script>
+		<style>
+			.custom_input_width {
+				width: 250px;
+			}
+
+			.custom_textarea_width {
+				width: 320px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="layuimini-container">
+			<div class="layuimini-main">
+
+				<fieldset class="layui-elem-field layui-field-title">
+					<legend>修改申请</legend>
+				</fieldset>
+
+				<form class="layui-form" action="" lay-filter="example">
+					<div class="layui-form-item">
+						<label class="layui-form-label"><span class="custom-font-color-red">*&nbsp;</span>课程名：</label>
+						<div class="layui-input-block custom_input_width">
+							<input type="hidden" name="aid" id="aid" autocomplete="off" class="layui-input">
+	                         <input type="text" name="cname" id="cname" lay-verify="cname" autocomplete="off" placeholder="请输入课程名" class="layui-input" disabled>
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">申请理由</label>
+						<div class="layui-input-block custom_input_width">
+							<input type="text" name="reason" id="reason" lay-verify="reason" autocomplete="off" placeholder="请输入申请理由" class="layui-input" required>
+						</div>
+					</div>
+
+					<div class="layui-form-item">
+						<label class="layui-form-label">相关证明</label>
+						<div class="layui-input-block" style="width: 400px;">
+							<div class="layui-input-block">
+								<input type="hidden" name="prove" id="prove" autocomplete="off" class="layui-input">
+								<button type="button" class="layui-btn"  id="uploadFile" lay-verify="isupload">选择文件</button>
+							</div>
+							<div>
+								<img class="layui-upload-img" id="demo1" name="demo1" style="width: 200px;height: 200px;">
+							</div>
+						</div>
+					</div>
+
+					<div class="layui-form-item">
+						<div class="layui-input-block">
+							<button class="layui-btn" lay-submit="" lay-filter="form" style="position: relative;left: 70px;">确认</button>
+						</div>
+					</div>
+				</form>
+				<ins class="adsbygoogle" style="display:inline-block;width:970px;height:10px"></ins>
+			</div>
+		</div>
+	</body>
+
+</html>

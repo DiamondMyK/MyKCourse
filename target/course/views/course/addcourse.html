@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<base href="../../" />
+		<meta charset="utf-8">
+		<title>添加课程</title>
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<link rel="stylesheet" href="lib/layui-v2.5.4/css/layui.css" media="all">
+		<link rel="stylesheet" href="css/public.css" media="all">
+		<script src="lib/layui-v2.5.4/layui.js" charset="utf-8"></script>
+		<script src="js/course/addcourse.js"></script>
+		<style>
+			.custom_input_width {
+				width: 500px;
+			}
+
+			.custom_textarea_width {
+				width: 600px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="layuimini-container">
+			<div class="layuimini-main">
+
+				<fieldset class="layui-elem-field layui-field-title">
+					<legend>添加课程</legend>
+				</fieldset>
+
+				<form class="layui-form" action="" lay-filter="example">
+					<div class="layui-input-block layui-inline" style="position: relative;left: 433px;">
+						<button type="reset" id="reset" class="layui-btn  layui-btn-sm layui-btn-primary" style="opacity:0.7">
+						    <i class="layui-icon layui-icon-refresh"></i>重置
+						</button>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label"><span class="custom-font-color-red">*&nbsp;</span>课程名：</label>
+						<div class="layui-input-block custom_input_width">
+							<input type="text" name="cname" lay-verify="cname" autocomplete="off" placeholder="请输入课程名" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-form-item layui-form-text">
+						<label class="layui-form-label">备注：</label>
+						<div class="layui-input-block custom_textarea_width">
+							<textarea name="cremark" id="cremark" autocomplete="off" lay-verify="content" class="layui-textarea"></textarea>
+						</div>
+					</div>
+
+					<div class="layui-form-item">
+						<div class="layui-input-block">
+							<button class="layui-btn" lay-submit="" lay-filter="form" style="position: relative;left: 170px;">立即提交</button>
+						</div>
+					</div>
+				</form>
+				<ins class="adsbygoogle" style="display:inline-block;width:970px;height:10px"></ins>
+			</div>
+		</div>
+	</body>
+
+</html>

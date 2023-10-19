@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<base href="../../" />
+		<meta charset="utf-8">
+		<title>用户查询</title>
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<link rel="stylesheet" href="lib/layui-v2.5.4/css/layui.css" media="all">
+		<link rel="stylesheet" href="css/public.css" media="all">
+		<script src="lib/layui-v2.5.4/layui.js" charset="utf-8"></script>
+		<script src="js/user/finduser.js"></script>
+	</head>
+
+	<body>
+		<div class="layuimini-container">
+			<div class="layuimini-main">
+
+				<fieldset class="layui-elem-field layui-field-title">
+					<legend>用户查询</legend>
+				</fieldset>
+				<div style="margin: 10px 10px 10px 10px">
+					<form class="layui-form layui-form-pane" action="">
+						<div class="layui-form-item">
+							<div class="layui-inline">
+								<label class="layui-form-label">用户名</label>
+								<div class="layui-input-inline">
+									<input type="text" name="username" id="username" lay-verify="username" autocomplete="off" placeholder="请输入用户名" class="layui-input">
+								</div>
+							</div>
+							<div class="layui-inline">
+								<label class="layui-form-label">真实姓名</label>
+								<div class="layui-input-inline">
+									<input type="text" name="realname" id="realname" lay-verify="realname" autocomplete="off" placeholder="请输入真实姓名" class="layui-input">
+								</div>
+							</div>
+							<div class="layui-inline">
+								<label class="layui-form-label">身份</label>
+								<div class="layui-input-block">
+									<select name="role" id="role" autocomplete="off">
+				                        <option value="" selected=""></option>
+				                        <option value="学生">学生</option>
+				                        <option value="课程主讲教师">课程主讲教师</option>
+										<option value="主管教师">主管教师</option>
+										<option value="管理员">管理员</option>
+				                    </select>
+								</div>
+							</div>
+							<div class="layui-inline">
+								<button class="layui-btn" lay-submit="" lay-filter="data-search-btn"><i class="layui-icon layui-icon-search"></i> 搜索</button>
+								<button type="reset" class="layui-btn layui-btn-primary"><i class="layui-icon layui-icon-refresh"></i>重置</button>
+							</div>
+						</div>
+					</form>
+				</div>
+				<!--表格头部-->
+				<script type="text/html" id="tablebar">
+				</script>
+				<!--layui数据表格-->
+				<table class="layui-hide" id="userTableId" lay-filter="userTableFilter"></table>
+				<!--自定义的列模板-->
+				<script type="text/html" id="statusTableBar">
+					<input type="checkbox" name="userstatus" value="{{d.userid}}"  lay-skin="switch" lay-text="启用|禁用" lay-filter="modifystatus" {{ d.status == '1'? 'checked' : '' }}>
+				</script>
+				<script type="text/html" id="currentTableBar">
+					<button class="layui-btn layui-btn-xs data-count-edit" data-method="edituser" lay-event="edit"><i class="layui-icon layui-icon-edit"></i>修改</button>
+					<button class="layui-btn layui-btn-xs layui-btn-danger data-count-delete" lay-event="delete"><i class="layui-icon layui-icon-delete"></i>删除</button>
+				</script>
+				<ins class="adsbygoogle" style="display:inline-block;width:970px;height:10px"></ins>
+			</div>
+		</div>
+	</body>
+
+</html>

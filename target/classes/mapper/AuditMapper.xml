@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.AuditMapper">
+
+    <insert id="insertAudit"
+        parameterType="model.Audit">
+        INSERT INTO audit(cid, uid,reason,prove,status)
+        VALUES(#{cid},#{uid},#{reason},#{prove},#{status})
+    </insert>
+
+    <delete id="deleteAudit">
+        DELETE FROM audit WHERE aid = #{aid}
+    </delete>
+
+    <select id="getById" resultType="model.Audit">
+        SELECT * FROM audit WHERE aid = #{aid}
+    </select>
+
+    <resultMap type="model.Audit" id="auditMap">
+        <result property="aid" column="aid" />
+        <result property="cid" column="cid" />
+        <result property="uid" column="uid" />
+        <result property="reason" column="reason" />
+        <result property="prove" column="prove" />
+        <result property="status" column="status" />
+        <result property="finaloneid" column="finaloneid" />
+        <result property="finaltwoid" column="finaltwoid" />
+        <result property="auditonename" column="auditonename" />
+        <result property="audittwoname" column="audittwoname" />
+        <result property="finalonename" column="finalonename" />
+        <result property="finaltwoname" column="finaltwoname" />
+        <result property="uname" column="uname" />
+        <result property="cname" column="cname" />
+        <result property="rejectedreason" column="rejectedreason" />
+    </resultMap>
+    <select id="selectAudits" parameterType="java.util.Map" resultMap="auditMap">
+        SELECT a.*,u1.realname as finalonename, u2.realname as finaltwoname,c.cname as cname,u3.realname as uname
+        FROM audit a
+        left join user u1 on a.finaloneid = u1.userid
+        left join user u2 on a.finaltwoid = u2.userid
+        left join user u3 on a.uid = u3.userid
+        left join course c on a.cid = c.cid
+        <where>
+            <if test="cid != null"> AND a.cid = #{cid} </if>
+            <if test="uid != null"> AND a.uid = #{uid} </if>
+            <if test="status != null"> AND a.status = #{status} </if>
+            <if test="cname != null"> AND c.cname LIKE CONCAT(CONCAT('%',#{cname}),'%')</if>
+            <if test="uname != null"> AND c.uname LIKE CONCAT(CONCAT('%',#{uname}),'%')</if>
+            <if test="export != null"> AND (a.status = '申请成功' or (a.status = '结束' and a.rejectedreason is null))</if>
+        </where>
+    </select>
+
+    <select id="selectPage" parameterType="java.util.Map" resultMap="auditMap">
+        SELECT a.*,u1.realname as finalonename, u2.realname as finaltwoname,c.cname as cname,u3.realname as uname
+        FROM audit a
+        left join user u1 on a.finaloneid = u1.userid
+        left join user u2 on a.finaltwoid = u2.userid
+        left join user u3 on a.uid = u3.userid
+        left join course c on a.cid = c.cid
+        <where>
+            <if test="cid != null"> AND a.cid = #{cid} </if>
+            <if test="uid != null"> AND a.uid = #{uid} </if>
+            <if test="status != null"> AND a.status = #{status} </if>
+            <if test="cname != null"> AND c.cname LIKE CONCAT(CONCAT('%',#{cname}),'%')</if>
+            <if test="uname != null"> AND u3.realname LIKE CONCAT(CONCAT('%',#{uname}),'%')</if>
+            <if test="oneid != null"> AND (c.auditone = 0 OR c.auditone = #{oneid}) </if>
+            <if test="twoid != null"> AND (c.audittwo = 0 OR c.audittwo = #{twoid}) </if>
+            <if test="finish != null"> AND a.status != #{finish} </if>
+        </where>
+        limit #{pageNo},#{pageSize}
+    </select>
+
+    <select id="selectPageCount" parameterType="java.util.Map" resultType="java.lang.Integer">
+        SELECT count(a.aid)
+        FROM audit a
+        left join user u1 on a.finaloneid = u1.userid
+        left join user u2 on a.finaltwoid = u2.userid
+        left join user u3 on a.uid = u3.userid
+        left join course c on a.cid = c.cid
+        <where>
+            <if test="cid != null"> AND a.cid = #{cid} </if>
+            <if test="uid != null"> AND a.uid = #{uid} </if>
+            <if test="status != null"> AND a.status = #{status} </if>
+            <if test="cname != null"> AND c.cname LIKE CONCAT(CONCAT('%',#{cname}),'%')</if>
+            <if test="uname != null"> AND u3.realname LIKE CONCAT(CONCAT('%',#{uname}),'%')</if>
+            <if test="oneid != null"> AND (c.auditone = 0 OR c.auditone = #{oneid}) </if>
+            <if test="twoid != null"> AND (c.audittwo = 0 OR c.audittwo = #{twoid}) </if>
+            <if test="finish != null"> AND a.status != #{finish} </if>
+        </where>
+    </select>
+
+    <update id="modifyAudit" parameterType="model.Audit">
+       UPDATE audit
+       <set>
+           <if test="reason != null"> reason = #{reason}, </if>
+           <if test="prove != null"> prove = #{prove}, </if>
+           <if test="finaloneid != null"> finaloneid = #{finaloneid}, </if>
+           <if test="finaltwoid != null"> finaltwoid = #{finaltwoid}, </if>
+           <if test="rejectedreason != null"> rejectedreason = #{rejectedreason}, </if>
+           <if test="status != null"> status = #{status} </if>
+       </set>
+       WHERE aid = #{aid}
+    </update>
+</mapper>
