@@ -192,7 +192,7 @@ MyK在线课程申请及审批系统是一款开源软件，使用的是位于[L
 
 如果您有任何关于项目的问题或建议，请随时联系我们：
 
-- 电子邮件：2898952080@qq.com
+- 电子邮件：xxxxxxx@qq.com
 - GitHub：[DiamondMyK 的 GitHub 账户](https://github.com/DiamondMyK)
 
 ## 致谢
